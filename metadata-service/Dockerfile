@@ -1,20 +1,20 @@
-# Lightweight Node.js image use karein
+# Use a lightweight Node.js image
 FROM node:18-alpine
 
-# Container ke andar working directory set karein
+# Set the working directory inside the container
 WORKDIR /app
 
-# Sirf package.json pehle copy karein taake dependencies cache ho sakein
+# Copy only package files first to leverage Docker layer caching
 COPY package*.json ./
 
-# Packages install karein
+# Install dependencies
 RUN npm install
 
-# Baqi saara code copy karein (index.js etc)
+# Copy the rest of the application code
 COPY . .
 
-# Service ka port expose karein
+# Expose the service port
 EXPOSE 8084
 
-# Container start hone par command chalayein
+# Start the application
 CMD ["node", "index.js"]
