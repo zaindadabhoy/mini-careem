@@ -54,6 +54,15 @@ services:
   web:
     build: ./tracking-service/client
 
+  # --- Metadata (Node / Redis) ---
+  metadata:
+    build: ./metadata-service
+    environment:
+      # Connects to the existing redis container above
+      - REDIS_HOST=redis
+    depends_on:
+      - redis
+
   # --- The one front door ---
   gateway:
     image: nginx:1.27-alpine
@@ -66,3 +75,4 @@ services:
       - drivers
       - tracking
       - web
+      - metadata

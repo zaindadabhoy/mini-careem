@@ -48,6 +48,7 @@ APIs.
 | **Wallet** | money / fares     | Java · Spring Boot             | MySQL    | Money needs ACID transactions and a double-entry ledger. Boring, battle-tested, relational. |
 | **Drivers**| driver profiles   | Python · Django                | MongoDB  | A bike, a car and a rickshaw driver share almost no fields. Profiles are documents, not rows. |
 | **Tracking**| live GPS location | JavaScript · Node + React      | Redis    | A GPS ping is stale in seconds. Persisting it wastes a database. Keep it in RAM with a TTL. |
+| **Metadata**| fare rates, peak factor | JavaScript · Node + Express | Redis / Local DB | Needs extremely fast read access during traffic surges, hence Node.js + RAM cache fallback pattern. |
 
 Each service is a self-contained project with its **own README** explaining its
 design in depth:
